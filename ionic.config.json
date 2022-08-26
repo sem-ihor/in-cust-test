@@ -1,0 +1,7 @@
+{
+  "name": "in-cust-test",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,20 @@
+<ion-header collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true" scroll-y="true">
+  <ion-card *ngIf="product">
+    <img [src]="product.image" alt="">
+    <ion-card-content>
+      <ion-card-title>
+        {{product.name}}
+      </ion-card-title>
+      <p>{{product.description}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

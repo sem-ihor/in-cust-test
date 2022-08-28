@@ -3,8 +3,8 @@
     <ion-title>Header</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen="true" scroll-y="false">
-  <ion-searchbar></ion-searchbar>
+<ion-content fullscreen="true" scroll-y="true">
+  <ion-searchbar (ionChange)="handleChange($event.target.value)" [debounce]="1000"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let product of productSvc.allObs() | async">
       <ion-thumbnail slot="start">

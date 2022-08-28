@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../../core/services/products.service';
 
 @Component({
@@ -8,8 +8,14 @@ import {ProductsService} from '../../core/services/products.service';
 })
 export class AllProductComponent implements OnInit {
 
-  constructor(private productSvc: ProductsService) { }
+  constructor(private productSvc: ProductsService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.productSvc.init();
+  }
 
+  handleChange(value: string) {
+    this.productSvc.filterByName(value);
+  }
 }

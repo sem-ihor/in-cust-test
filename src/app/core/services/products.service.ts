@@ -12,6 +12,9 @@ export class ProductsService {
   private subjAll: BehaviorSubject<Array<Product>> = new BehaviorSubject<Array<Product>>([]);
 
   constructor() {
+  }
+
+  init() {
     fetch('./assets/mocks/data.json').then(res => res.json())
       .then((jsonData: Array<Product>) => {
         this.all = jsonData;
@@ -19,13 +22,16 @@ export class ProductsService {
       });
   }
 
-  init() {
-    this.emitValues();
-    // get data
-  }
-
   allObs(): Observable<Array<Product>> {
     return this.subjAll.asObservable();
+  }
+
+  filterByName(value: string) {
+    fetch('./assets/mocks/data.json').then(res => res.json())
+      .then((jsonData: Array<Product>) => {
+        this.all = jsonData.filter(subj => subj.name.toLowerCase().includes(value.toLowerCase()));
+        this.emitValues();
+      });
   }
 
   private emitValues() {

@@ -24,6 +24,13 @@ export class AllProductComponent implements OnInit, OnDestroy {
     await this.productSvc.filterByName(value);
   }
 
+  doRefresh(event: any) {
+    setTimeout(async () => {
+      this.search = '';
+      event.target.complete();
+    }, 1000);
+  }
+
   ngOnDestroy(): void {
     this.search$.unsubscribe();
   }

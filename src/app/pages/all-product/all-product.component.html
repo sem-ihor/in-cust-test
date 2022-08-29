@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Header</ion-title>
+    <ion-title>Searchbar</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen="true" scroll-y="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-searchbar
     [(ngModel)]="search"
     (ionChange)="handleChange($event.target.value)"
     [debounce]="500"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let product of productSvc.allObs() | async" [routerLink]="['/product', product.sku]">
+    <ion-item *ngFor="let product of productSvc.allObs() | async"
+              [routerLink]="['/product', product.sku]">
       <ion-thumbnail slot="start">
-        <img [src]="product.image"
+        <!-- TODO - change src image -->
+        <img src="./assets/images/150x300.png"
              [alt]="product.name">
       </ion-thumbnail>
       <ion-label>

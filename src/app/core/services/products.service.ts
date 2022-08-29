@@ -25,16 +25,14 @@ export class ProductsService {
       const search = await this.storage.load(this.STORAGE_KEY);
       this.search.next(search);
     }
-    this.fetchData();
+    await this.fetchData();
   }
 
-  fetchData(): void {
-    fetch('./assets/mocks/data.json').then(res => res.json())
-      .then((jsonData: Array<Product>) => {
-        this.all = jsonData;
-        this.productPool = jsonData;
-        this.emitValues();
-      });
+  async fetchData() {
+    const a = await fetch('./assets/mocks/data.json');
+    this.all = await a.json();
+    this.productPool = this.all;
+    this.emitValues();
   }
 
   allObs(): Observable<Array<Product>> {
@@ -43,6 +41,10 @@ export class ProductsService {
 
   searchObs(): Observable<string> {
     return this.search.asObservable();
+  }
+
+  isProduct(): boolean {
+    return !!(this.productPool.length);
   }
 
   async filterByName(value: string) {

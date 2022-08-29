@@ -18,7 +18,10 @@ export class ProductComponent implements OnInit {
               private productSvc: ProductsService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if (!this.productSvc.isProduct()) {
+      await this.productSvc.fetchData();
+    }
     this.$state = this.route.params.subscribe(params => {
       this.product = this.productSvc.getById(+params.sku);
     });

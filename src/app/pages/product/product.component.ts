@@ -13,6 +13,8 @@ export class ProductComponent implements OnInit {
 
   $state: Subscription;
   product: Product;
+  amount: number;
+  quantity: number;
 
   constructor(private route: ActivatedRoute,
               private productSvc: ProductsService) {
@@ -25,6 +27,14 @@ export class ProductComponent implements OnInit {
     this.$state = this.route.params.subscribe(params => {
       this.product = this.productSvc.getById(+params.sku);
     });
+  }
+
+  handleAmount(value: number) {
+    this.quantity = value / this.product.price;
+  }
+
+  handleQuantity(value: number) {
+    this.amount = value * this.product.price;
   }
 
   ionViewWillLeave(): void {

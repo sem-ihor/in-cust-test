@@ -12,7 +12,7 @@ export class AllProductComponent implements OnInit, OnDestroy {
   search = '';
   search$: Subscription;
 
-  constructor(private productSvc: ProductsService) {
+  constructor(public productSvc: ProductsService) {
   }
 
   async ngOnInit() {

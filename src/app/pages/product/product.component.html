@@ -39,8 +39,12 @@
           </ion-chip>
         </ion-col>
         <ion-col size="6">
-          <ion-chip (click)="handleQuantity(5)" color="primary">5 qty</ion-chip>
-          <ion-chip (click)="handleQuantity(10)" color="primary">10 qty</ion-chip>
+          <ion-chip
+            (click)="handleQuantity(5)"
+            color="primary">5 qty</ion-chip>
+          <ion-chip
+            (click)="handleQuantity(10)"
+            color="primary">10 qty</ion-chip>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -48,7 +52,7 @@
           <ion-item>
             <ion-label position="stacked">Amount, $</ion-label>
             <ion-input
-              (ionInput)="handleAmount(+$event.target.value)"
+              (ionInput)="handleInputAmount($event)"
               [value]="amount" type="number"></ion-input>
           </ion-item>
         </ion-col>
@@ -56,7 +60,7 @@
           <ion-item>
             <ion-label position="stacked">Quantity</ion-label>
             <ion-input
-              (ionInput)="handleQuantity(+$event.target.value)"
+              (ionInput)="handleInputQuantity($event)"
               [value]="quantity" type="number"></ion-input>
           </ion-item>
         </ion-col>

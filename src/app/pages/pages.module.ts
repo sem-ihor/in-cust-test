@@ -4,6 +4,7 @@ import {AllProductComponent} from './all-product/all-product.component';
 import {IonicModule} from '@ionic/angular';
 import {ProductComponent} from './product/product.component';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     AllProductComponent,

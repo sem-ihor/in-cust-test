@@ -4,7 +4,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen="true" scroll-y="true">
-  <ion-searchbar (ionChange)="handleChange($event.target.value)" [debounce]="1000"></ion-searchbar>
+  <ion-searchbar
+    [(ngModel)]="search"
+    (ionChange)="handleChange($event.target.value)"
+    [debounce]="500"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let product of productSvc.allObs() | async" [routerLink]="['/product', product.sku]">
       <ion-thumbnail slot="start">

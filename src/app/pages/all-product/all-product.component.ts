@@ -1,21 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductsService} from '../../core/services/products.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-all-product',
   templateUrl: './all-product.component.html',
   styleUrls: ['./all-product.component.scss'],
 })
-export class AllProductComponent implements OnInit {
+export class AllProductComponent implements OnInit, OnDestroy {
+
+  search = '';
+  search$: Subscription;
 
   constructor(private productSvc: ProductsService) {
   }
 
-  ngOnInit() {
-    this.productSvc.init();
+  async ngOnInit() {
+    await this.productSvc.init();
+    this.search$ = this.productSvc.searchObs().subscribe(value => this.search = value);
   }
 
-  handleChange(value: string) {
-    this.productSvc.filterByName(value);
+  async handleChange(value: string) {
+    await this.productSvc.filterByName(value);
+  }
+
+  ngOnDestroy(): void {
+    this.search$.unsubscribe();
   }
 }

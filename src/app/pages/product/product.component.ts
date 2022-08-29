@@ -32,11 +32,13 @@ export class ProductComponent implements OnInit {
   }
 
   handleAmount(value: number) {
-    this.quantity = value / this.product.price;
+    this.amount = value;
+    this.quantity = +(value / this.product.price).toFixed(3);
   }
 
   handleQuantity(value: number) {
-    this.amount = value * this.product.price;
+    this.quantity = value;
+    this.amount = +(value * this.product.price).toFixed(3);
   }
 
   async enableSidebar() {

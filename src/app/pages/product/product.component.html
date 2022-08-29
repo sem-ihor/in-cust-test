@@ -28,8 +28,14 @@
       <p>{{product.description}}</p>
       <ion-row>
         <ion-col size="6">
-          <ion-chip (click)="handleAmount(10)" color="primary">$10</ion-chip>
-          <ion-chip (click)="handleAmount(100)" color="primary">$100</ion-chip>
+          <ion-chip
+            (click)="handleAmount(10)"
+            color="primary">$10
+          </ion-chip>
+          <ion-chip
+            (click)="handleAmount(100)"
+            color="primary">$100
+          </ion-chip>
         </ion-col>
         <ion-col size="6">
           <ion-chip (click)="handleQuantity(5)" color="primary">5 qty</ion-chip>
@@ -41,16 +47,16 @@
           <ion-item>
             <ion-label position="stacked">Amount, $</ion-label>
             <ion-input
-              (ionChange)="handleAmount(+$event.target.value)"
-              [(ngModel)]="amount" type="number"></ion-input>
+              (ionInput)="handleAmount(+$event.target.value)"
+              [value]="amount" type="number"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="6">
           <ion-item>
             <ion-label position="stacked">Quantity</ion-label>
             <ion-input
-              (ionChange)="handleQuantity(+$event.target.value)"
-              [(ngModel)]="quantity" type="number"></ion-input>
+              (ionInput)="handleQuantity(+$event.target.value)"
+              [value]="quantity" type="number"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
